@@ -1,7 +1,7 @@
 # Entry 2
-##### X/X/XX
+##### 12/19/22
 
-Text
+Over the past few weeks I have been learning my tool, p5js. I can say that I learnt many things during the past weeks.
 
 [Previous](entry01.md) | [Next](entry03.md)
 
