@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            /* CSS */
+
+        </style>
+
+        <title>Pinball</title>
+    </head>
+    <body>
+        <!-- HTML -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+         <!-- planck -->
+        <script src="https://cdn.jsdelivr.net/npm/planck@latest/dist/planck.min.js"></script>
+        <!-- Version 3 of p5.play -->
+        <script src="https://p5play.org/v3/p5play.js"></script>
+
+        <h1>Click mouse to spawn the ball</h1>
+        <h1>'Q' controls the left flipper & 'E' controls the right flipper</h1>
+
+        <script>
+            // JS
+
+            let ball;
+            let flipperLeft;
+            let flipperRight;
+            let leftWall;
+            let rightWall;
+            let bottomLeftWall;
+            let bottomRightWall;
+            let topWall;
+
+            function setup() {
+                new Canvas(750,950);
+                background(200);
+                world.gravity.y = 10;
+                flipperLeft= new Sprite(210,720,180,25);
+                flipperRight= new Sprite(540,720,180,25);
+
+                flipperLeft.collider = 'kinematic';
+                flipperRight.collider = 'kinematic';
+
+                flipperLeft.offset.x = 60;
+                flipperRight.offset.x = -60;
+
+                leftWall= new Sprite(125,325,20,550);
+                rightWall= new Sprite(625,325,20,550);
+                bottomLeftWall= new Sprite(145,660,20,120);
+                bottomLeftWall.rotation= 150;
+                bottomRightWall= new Sprite(605,660,20,120);
+                bottomRightWall.rotation= -150;
+                topWall= new Sprite(375,40,520,20);
+
+                leftWall.collider= 'static';
+                rightWall.collider= 'static';
+                bottomLeftWall.collider= 'static';
+                bottomRightWall.collider= 'static';
+                topWall.collider= 'static';
+            }
+
+            function draw() {
+                clear();
+            }
+
+            function mousePressed() {
+                ball = new Sprite(mouseX,65,35);
+                ball.color= GRAY;
+            }
+
+            function keyPressed(){
+                if(key=='q'){
+                    flipperLeft.rotateTo(-45,7);
+                }
+                else if(key=='e'){
+                    flipperRight.rotateTo(45,7);
+                }
+            }
+
+            function keyReleased(){
+                if(key=='q'){
+                    flipperLeft.rotateTo(0,7);
+                }
+                else if(key=='e'){
+                    flipperRight.rotateTo(0,7);
+                }
+            }
+
+
+        </script>
+    </body>
+</html>
