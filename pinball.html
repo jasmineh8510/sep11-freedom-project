@@ -28,7 +28,9 @@
         <script>
             // JS
 
+            //The ball as well as the flippers and basic walls
             let ball;
+            let active =false; //Boolean val for only letting 1 ball at a time
             let flipperLeft;
             let flipperRight;
             let leftWall;
@@ -37,19 +39,37 @@
             let bottomRightWall;
             let topWall;
 
+            //Obstacles
+            let topTriangle;
+            let middleTriangle;
+            let leftTriangle;
+            let rightTriangle;
+            let smallPlatformLeft;
+            let smallPlatformRight;
+
+            //Point shapes
+            let fiftyPoint;
+            let thrityPoint;
+            let twentyPoint;
+            let tenPoint;
+
             function setup() {
                 new Canvas(750,950);
-                background(200);
                 world.gravity.y = 10;
-                flipperLeft= new Sprite(210,720,180,25);
-                flipperRight= new Sprite(540,720,180,25);
 
+                //Setting up the flippers
+                flipperLeft= new Sprite(210,740,180,25);
+                flipperLeft.color='lime';
+                flipperRight= new Sprite(540,740,180,25);
+                flipperRight.color='lime';
                 flipperLeft.collider = 'kinematic';
                 flipperRight.collider = 'kinematic';
-
                 flipperLeft.offset.x = 60;
                 flipperRight.offset.x = -60;
+                flipperLeft.rotateTo(30);
+                flipperRight.rotateTo(-30);
 
+                //Setting up the walls
                 leftWall= new Sprite(125,325,20,550);
                 rightWall= new Sprite(625,325,20,550);
                 bottomLeftWall= new Sprite(145,660,20,120);
@@ -57,38 +77,52 @@
                 bottomRightWall= new Sprite(605,660,20,120);
                 bottomRightWall.rotation= -150;
                 topWall= new Sprite(375,40,520,20);
-
                 leftWall.collider= 'static';
                 rightWall.collider= 'static';
                 bottomLeftWall.collider= 'static';
                 bottomRightWall.collider= 'static';
                 topWall.collider= 'static';
+                leftWall.color= 'green';
+                rightWall.color= 'green';
+                bottomLeftWall.color= 'green';
+                bottomRightWall.color= 'green';
+                topWall.color= 'green';
+
+                //var topTri= triangle(375,100,310,150,440,150)
+                topTriangle= new Sprite([[375, 100],[440, 150],[310, 150], [375, 100]]);
+                topTriangle.collider='static';
             }
 
             function draw() {
                 clear();
+                background(20);
             }
 
-            function mousePressed() {
-                ball = new Sprite(mouseX,65,35);
-                ball.color= GRAY;
+            function mousePressed() { //Allows user to spawn 1 ball
+                if(active==false){
+                    if(mouseX>130 && mouseX<620){ //Only will spawn the ball if user clicks within pinball area
+                        ball = new Sprite(mouseX,65,30);
+                        ball.color= 'lime';
+                        active=true; //Will make sure no more balls could spawn
+                    }
+                }
             }
 
             function keyPressed(){
-                if(key=='q'){
+                if(key=='q'){ //If q is pressed then tilt the flipper upwards
                     flipperLeft.rotateTo(-45,7);
                 }
-                else if(key=='e'){
+                else if(key=='e'){  //If e is pressed then tilt the flipper upwards
                     flipperRight.rotateTo(45,7);
                 }
             }
 
             function keyReleased(){
-                if(key=='q'){
-                    flipperLeft.rotateTo(0,7);
+                if(key=='q'){ //If q is released return flipper to the default position
+                    flipperLeft.rotateTo(30,7);
                 }
-                else if(key=='e'){
-                    flipperRight.rotateTo(0,7);
+                else if(key=='e'){ //If e is released return flipper to the default position
+                    flipperRight.rotateTo(-30,7);
                 }
             }
 
