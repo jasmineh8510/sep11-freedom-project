@@ -88,9 +88,28 @@
                 bottomRightWall.color= 'green';
                 topWall.color= 'green';
 
-                //var topTri= triangle(375,100,310,150,440,150)
+                //Setting up the obstacles
                 topTriangle= new Sprite([[375, 100],[440, 150],[310, 150], [375, 100]]);
+                middleTriangle= new Sprite([[375, 325],[430, 400],[320, 400], [375, 325]]);
+                leftTriangle= new Sprite([[200,500],[200,600],[280,650],[200,500]]);
+                rightTriangle= new Sprite([[550,500],[550,600],[470,650],[550,500]]);
+                smallPlatformLeft = new Sprite(220,175,20,100);
+                smallPlatformLeft.rotation= 35;
+                smallPlatformRight= new Sprite(530,175,20,100);
+                smallPlatformRight.rotation= -35;
                 topTriangle.collider='static';
+                middleTriangle.collider='static';
+                leftTriangle.collider= 'static';
+                rightTriangle.collider= 'static';
+                smallPlatformLeft.collider= 'static';
+                smallPlatformRight.collider= 'static';
+                topTriangle.color='green';
+                middleTriangle.color='green';
+                leftTriangle.color= 'green';
+                rightTriangle.color= 'green';
+                smallPlatformLeft.color= 'green';
+                smallPlatformRight.color= 'green';
+
             }
 
             function draw() {
