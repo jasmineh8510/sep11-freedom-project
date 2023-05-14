@@ -18,9 +18,10 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
          <!-- planck -->
-        <script src="https://cdn.jsdelivr.net/npm/planck@latest/dist/planck.min.js"></script>
+        <script src="https://p5play.org/v3/planck.min.js"></script>
         <!-- Version 3 of p5.play -->
         <script src="https://p5play.org/v3/p5play.js"></script>
+
 
         <h1>Click mouse to spawn the ball</h1>
         <h1>'Q' controls the left flipper & 'E' controls the right flipper</h1>
@@ -28,60 +29,39 @@
         <script>
             // JS
 
-            //The ball as well as the flippers and basic walls
-            let ball;
-            let active =false; //Boolean val for only letting 1 ball at a time
-            let flipperLeft;
-            let flipperRight;
-            let leftWall;
-            let rightWall;
-            let bottomLeftWall;
-            let bottomRightWall;
-            let topWall;
+            //The basic walls and flippers
+            let flipperLeft,flipperRight;
+            let leftWall,rightWall,bottomLeftWall,bottomRightWall,topWall;
 
             //Obstacles
-            let topTriangle;
-            let middleTriangle;
-            let leftTriangle;
-            let rightTriangle;
-            let smallPlatformLeft;
-            let smallPlatformRight;
+            let topTriangle,middleTriangle,leftTriangle,rightTriangle,smallPlatformLeft,smallPlatformRight;
 
             //Point shapes
-            let fiftyPoint;
-            let thrityPoint;
-            let twentyPoint;
-            let tenPoint;
+            let fiftyPoint,thrityPoint,twentyPoint,tenPoint;
+            let points=0;
 
             function setup() {
                 new Canvas(750,950);
                 world.gravity.y = 10;
 
                 //Setting up the flippers
-                flipperLeft= new Sprite(210,740,180,25);
+                flipperLeft= new Sprite(210,740,180,25,'kinematic');
                 flipperLeft.color='lime';
-                flipperRight= new Sprite(540,740,180,25);
+                flipperRight= new Sprite(540,740,180,25,'kinematic');
                 flipperRight.color='lime';
-                flipperLeft.collider = 'kinematic';
-                flipperRight.collider = 'kinematic';
                 flipperLeft.offset.x = 60;
                 flipperRight.offset.x = -60;
                 flipperLeft.rotateTo(30);
                 flipperRight.rotateTo(-30);
 
                 //Setting up the walls
-                leftWall= new Sprite(125,325,20,550);
-                rightWall= new Sprite(625,325,20,550);
-                bottomLeftWall= new Sprite(145,660,20,120);
+                leftWall= new Sprite(125,325,20,550,'static');
+                rightWall= new Sprite(625,325,20,550,'static');
+                bottomLeftWall= new Sprite(145,660,20,120,'static');
                 bottomLeftWall.rotation= 150;
-                bottomRightWall= new Sprite(605,660,20,120);
+                bottomRightWall= new Sprite(605,660,20,120,'static');
                 bottomRightWall.rotation= -150;
-                topWall= new Sprite(375,40,520,20);
-                leftWall.collider= 'static';
-                rightWall.collider= 'static';
-                bottomLeftWall.collider= 'static';
-                bottomRightWall.collider= 'static';
-                topWall.collider= 'static';
+                topWall= new Sprite(375,40,520,20,'static');
                 leftWall.color= 'green';
                 rightWall.color= 'green';
                 bottomLeftWall.color= 'green';
@@ -89,20 +69,14 @@
                 topWall.color= 'green';
 
                 //Setting up the obstacles
-                topTriangle= new Sprite([[375, 100],[440, 150],[310, 150], [375, 100]]);
-                middleTriangle= new Sprite([[375, 325],[430, 400],[320, 400], [375, 325]]);
-                leftTriangle= new Sprite([[200,500],[200,600],[280,650],[200,500]]);
-                rightTriangle= new Sprite([[550,500],[550,600],[470,650],[550,500]]);
-                smallPlatformLeft = new Sprite(220,175,20,100);
+                topTriangle= new Sprite([[375, 100],[440, 150],[310, 150], [375, 100]],'static');
+                middleTriangle= new Sprite([[375, 325],[430, 400],[320, 400], [375, 325]],'static');
+                leftTriangle= new Sprite([[200,500],[200,600],[280,650],[200,500]],'static');
+                rightTriangle= new Sprite([[550,500],[550,600],[470,650],[550,500]],'static');
+                smallPlatformLeft = new Sprite(220,175,20,100,'static');
                 smallPlatformLeft.rotation= 35;
-                smallPlatformRight= new Sprite(530,175,20,100);
+                smallPlatformRight= new Sprite(530,175,20,100,'static');
                 smallPlatformRight.rotation= -35;
-                topTriangle.collider='static';
-                middleTriangle.collider='static';
-                leftTriangle.collider= 'static';
-                rightTriangle.collider= 'static';
-                smallPlatformLeft.collider= 'static';
-                smallPlatformRight.collider= 'static';
                 topTriangle.color='green';
                 middleTriangle.color='green';
                 leftTriangle.color= 'green';
@@ -110,13 +84,34 @@
                 smallPlatformLeft.color= 'green';
                 smallPlatformRight.color= 'green';
 
+                fiftyPoint= new Sprite(375,250,60,'static');
+                thrityPoint= new Sprite(200,350,40,'static');
+                twentyPoint= new Sprite(550,350,40,'static');
+                tenPoint= new Sprite(375,475,50,'static');
+                fiftyPoint.color= 20;
+                thrityPoint.color= 20;
+                twentyPoint.color= 20;
+                tenPoint.color= 20;
+                fiftyPoint.stroke='lime';
+                thrityPoint.stroke='lime';
+                twentyPoint.stroke='lime';
+                tenPoint.stroke='lime';
+                fiftyPoint.textColor='lime';
+                thrityPoint.textColor='lime';
+                twentyPoint.textColor='lime';
+                tenPoint.textColor='lime';
+                fiftyPoint.textSize=20;
+                thrityPoint.textSize=20;
+                twentyPoint.textSize=20;
+                tenPoint.textSize=20;
+                fiftyPoint.text="50";
+                thrityPoint.text="30";
+                twentyPoint.text="20";
+                tenPoint.text="10";
             }
 
-            function draw() {
-                clear();
-                background(20);
-            }
-
+            let ball;
+            let active =false;
             function mousePressed() { //Allows user to spawn 1 ball
                 if(active==false){
                     if(mouseX>130 && mouseX<620){ //Only will spawn the ball if user clicks within pinball area
@@ -125,6 +120,17 @@
                         active=true; //Will make sure no more balls could spawn
                     }
                 }
+            }
+
+            function draw() {
+                clear();
+                background(20);
+
+                if (ball.collides(fiftyPoint)) {
+                    points+=50;
+                    console.log(points)
+	            }
+                //pointCheck();
             }
 
             function keyPressed(){
@@ -145,6 +151,24 @@
                 }
             }
 
+            function pointCheck(){
+                if (ball.collides(fiftyPoint)){
+                    points+=50;
+                    console.log(points);
+                }
+                else if(ball.collides(thirtyPoint)){
+                    points+=30;
+                    console.log(points);
+                }
+                else if(ball.collides(twentyPoint)){
+                    points+=20;
+                    console.log(points);
+                }
+                else if(ball.collides(tenPoint)){
+                    points+=10;
+                    console.log(points);
+                }
+            }
 
         </script>
     </body>
