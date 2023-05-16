@@ -98,6 +98,7 @@
                 smallPlatformLeft.color= 'green';
                 smallPlatformRight.color= 'green';
 
+                //Setting up point circles
                 fiftyPoint= new Sprite(375,250,60,'static');
                 thirtyPoint= new Sprite(200,350,40,'static');
                 twentyPoint= new Sprite(550,350,40,'static');
@@ -126,7 +127,7 @@
             }
 
             let ball;
-            let active =false;
+            let active =false; //Val lets us know if the game is active
             function mousePressed() { //Allows user to spawn 1 ball
                 if(active==false){
                     if(mouseX>130 && mouseX<620){ //Only will spawn the ball if user clicks within pinball area
@@ -140,14 +141,15 @@
             function draw() {
                 clear();
                 background(20);
-                if(active){
+                if(active){ //If the game is active start checking for points
                     pointCheck();
-                    if(ball.x > 950){
-                        var gameOver= document.createElement('h3');
-                        gameOver.innerHTML= "Game Over!";
-                        gameOver.classList.add(instruction);
-                        document.body.appendChild(gameOver);
-                    }
+                    // if(ball.x > 950){
+                    //     var gameOver= document.createElement('h3');
+                    //     gameOver.innerHTML= "Game Over!";
+                    //     gameOver.classList.add("instruction");
+                    //     document.body.appendChild(gameOver);
+                    //     active=false;
+                    // }
                 }
             }
 
@@ -173,23 +175,22 @@
                 }
             }
 
-            function pointCheck(){
+            function pointCheck(){  //If the ball collides with a point circle, then add __ amount of points
                 if (ball.collides(fiftyPoint)){
-                    console.log("collision")
                     points+=50;
-                    console.log(points);
+                    console.log("You have "+ points + " points");
                 }
                 else if(ball.collides(thirtyPoint)){
                     points+=30;
-                    console.log(points);
+                    console.log("You have "+ points + " points");
                 }
                 else if(ball.collides(twentyPoint)){
                     points+=20;
-                    console.log(points);
+                    console.log("You have "+ points + " points");
                 }
                 else if(ball.collides(tenPoint)){
                     points+=10;
-                    console.log(points);
+                    console.log("You have "+ points + " points");
                 }
             }
 
