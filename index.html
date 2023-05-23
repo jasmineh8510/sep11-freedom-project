@@ -34,14 +34,21 @@
         <!-- Version 3 of p5.play -->
         <script src="https://p5play.org/v3/p5play.js"></script>
 
+        <div id="gameText">
+            <h1 class="instruction">P I N B A L L</h1>
+            <h2 class="instruction">Hit the circles to gain points until you lose the ball!</h2>
+            <h2 class="instruction">'Q' to use left flipper | 'E' to use right flipper</h2>
+            <h2 class="instruction">Press anywhere within the game area to begin!</h2>
+            <h3 class="instruction">Score: 0</h3>
+        </div>
 
-        <h1 class="instruction">P I N B A L L</h1>
-        <h2 class="instruction">Hit the circles to gain points until you lose the ball!</h2>
-        <h2 class="instruction">'Q' to use left flipper | 'E' to use right flipper</h2>
-        <h2 class="instruction">Press anywhere within the game area to begin!</h2>
 
         <script>
             // JS
+            //score counter
+            let score= document.querySelector('h3');
+            //Game Over message
+            var gameOver= document.createElement('h3');
 
             //The basic walls and flippers
             let flipperLeft,flipperRight;
@@ -123,17 +130,19 @@
                 thirtyPoint.text="30";
                 twentyPoint.text="20";
                 tenPoint.text="10";
-
             }
 
             let ball;
             let active =false; //Val lets us know if the game is active
-            function mousePressed() { //Allows user to spawn 1 ball
+            function mousePressed() { //Allows user to spawn a ball
                 if(active==false){
                     if(mouseX>130 && mouseX<620){ //Only will spawn the ball if user clicks within pinball area
                         ball = new Sprite(mouseX,65,30);
                         ball.color= 'lime';
-                        active=true; //Will make sure no more balls could spawn
+                        score.innerHTML= "Score: 0"; //Score starts at 0
+                        points=0; //Resets the score after 1st time playing
+                        gameOver.remove(); //Removes the game over message after starting again
+                        active=true; //The game has started
                     }
                 }
             }
@@ -141,20 +150,22 @@
             function draw() {
                 clear();
                 background(20);
-                if(active){ //If the game is active start checking for points
+                if(active){ //If the game is active start checking for points and loss
                     pointCheck();
-                    // if(ball.x > 950){
-                    //     var gameOver= document.createElement('h3');
-                    //     gameOver.innerHTML= "Game Over!";
-                    //     gameOver.classList.add("instruction");
-                    //     document.body.appendChild(gameOver);
-                    //     active=false;
-                    // }
+                    lose();
                 }
             }
+           // console.log(points);
 
-            console.log(points);
-
+            function lose(){
+                if(ball.y > height){ //Game over if the ball goes out of the play area
+                        gameOver.innerHTML= "Game Over! Press within game area to try again!";
+                        gameOver.classList.add("instruction");
+                        document.body.appendChild(gameOver);
+                        document.querySelector('#gameText').appendChild(gameOver);
+                        active=false; //The game is over
+                    }
+            }
 
 
             function keyPressed(){
@@ -176,21 +187,25 @@
             }
 
             function pointCheck(){  //If the ball collides with a point circle, then add __ amount of points
-                if (ball.collides(fiftyPoint)){
+                if (ball.collided(fiftyPoint)){
                     points+=50;
-                    console.log("You have "+ points + " points");
+                    score.innerHTML= "Score: " + points;
+                    //console.log("You have "+ points + " points");
                 }
-                else if(ball.collides(thirtyPoint)){
+                else if(ball.collided(thirtyPoint)){
                     points+=30;
-                    console.log("You have "+ points + " points");
+                    score.innerHTML= "Score: " + points;
+                    //console.log("You have "+ points + " points");
                 }
-                else if(ball.collides(twentyPoint)){
+                else if(ball.collided(twentyPoint)){
                     points+=20;
-                    console.log("You have "+ points + " points");
+                    score.innerHTML= "Score: " + points;
+                    //console.log("You have "+ points + " points");
                 }
-                else if(ball.collides(tenPoint)){
+                else if(ball.collided(tenPoint)){
                     points+=10;
-                    console.log("You have "+ points + " points");
+                    score.innerHTML= "Score: " + points;
+                    //console.log("You have "+ points + " points");
                 }
             }
 
