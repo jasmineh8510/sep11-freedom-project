@@ -2,16 +2,16 @@
 by Jasmine Hidalgo
 
 ## Context
-The "Freedom Project" for SEP11 is all about X. The purpose of this blog is to X.
+The "Freedom Project" for SEP11 is all about making something you want to make. The purpose of this blog is to keep track of my process throughout the making of this project.
 
 ## Content
-For my project, I am making X. This blog will walk through my process of independently studying X in order to make X.
+For my project, I am making a pinball game. This blog will walk through my process of independently studying p5js in order to make my pinball game. Although pinball was not my first idea, I learned more and I improvised.
 
 ## Links
 
-Product
+[Product](https://jasmineh8510.github.io/sep11-freedom-project/)
 
-Presentation
+[Presentation](https://docs.google.com/presentation/d/1xI5ANK4RyT7WUZEPuaj0tSug6k73yFLYD4fbivIdV9Q/edit?usp=sharing)
 
 ## Implications
 X
