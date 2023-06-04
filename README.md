@@ -5,7 +5,7 @@ by Jasmine Hidalgo
 The "Freedom Project" for SEP11 is all about making something you want to make. The purpose of this blog is to keep track of my process throughout the making of this project.
 
 ## Content
-For my project, I am making a pinball game. This blog will walk through my process of independently studying p5js in order to make my pinball game. Although pinball was not my first idea, I learned more and I improvised.
+For my project, I made a pinball game. This blog will walk through my process of independently studying p5js in order to make my project. Although pinball was not my first idea, as I learned more about how to use p5js I came up with more solid ideas which ended with pinball.
 
 ## Links
 
@@ -14,7 +14,7 @@ For my project, I am making a pinball game. This blog will walk through my proce
 [Presentation](https://docs.google.com/presentation/d/1xI5ANK4RyT7WUZEPuaj0tSug6k73yFLYD4fbivIdV9Q/edit?usp=sharing)
 
 ## Implications
-X
+This project's implications are more social because it is a game. For individuals this game can be something to play in one's freetime or to play with friends and family to see who could get a higher score.
 
 ---
 
@@ -24,7 +24,3 @@ X
 * [Blog Entry 4](entries/entry04.md)
 * [Blog Entry 5](entries/entry05.md)
 * [Blog Entry 6](entries/entry06.md)
-* [Blog Entry 7](entries/entry07.md)
-* [Blog Entry 8](entries/entry08.md)
-* [Blog Entry 9](entries/entry09.md)
-* [Blog Entry 10](entries/entry10.md)
