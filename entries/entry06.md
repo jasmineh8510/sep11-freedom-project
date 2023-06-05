@@ -53,6 +53,13 @@ After I got the point system working I updated the instructrions and added the s
 ```
 After I did these things I had a game that functions correctly and was convenient to use.
 
-[Previous](entry05.md) | [Next](entry07.md)
+## Presentations
+
+## Conclusion
+In this blog I demonstated being in stages 6(Testing), 7(Improving), and 8(Communicating Results) of the engineering design process. There was many skills I used and improved during the past few weeks. I was able to check various documentation to debugg my code. When I couldn't find an answer after looking online I was able to self-advocate and ask the others around me. I also had to be considerate of all aspects of my game in order to make it easily playable. Finally for the presenting of my project I had to manage my time and communicate my project to others. I prioritized what was most important to complete before the presentations and I had to figure out creative ways to present the game.
+
+This project has been a very wild journey for me. At first I wasn't even sure what I wanted to make but through learning more it all came together to make this project. I learned a lot while making this project. I improved in my skills by a landslide and I am not only proud of the game but also myself for coming so far. I think I want to continue down the path of making games in the future. I want to go on from making simple games to more advanced ones and hopefully I will learn even more from making those.
+
+[Previous](entry05.md)
 
 [Home](../README.md)
