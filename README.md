@@ -11,7 +11,7 @@ For my project, I made a pinball game. This blog will walk through my process of
 
 [Product](https://jasmineh8510.github.io/sep11-freedom-project/)
 
-[Presentation](https://docs.google.com/presentation/d/1xI5ANK4RyT7WUZEPuaj0tSug6k73yFLYD4fbivIdV9Q/edit?usp=sharing)
+[Presentation]([https://docs.google.com/presentation/d/1xI5ANK4RyT7WUZEPuaj0tSug6k73yFLYD4fbivIdV9Q/edit?usp=sharing](https://docs.google.com/presentation/d/1s1MQXdQId5GVGr2K0XDDLgQc1keoM7heDR6TzAp1cdA/edit?usp=sharing))
 
 ## Implications
 This project's implications are more social because it is a game. For individuals this game can be something to play in one's freetime or to play with friends and family to see who could get a higher score.
